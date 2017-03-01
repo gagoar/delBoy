@@ -1,0 +1,17 @@
+{
+  "name": "delBoy",
+  "version": "1.0.0",
+  "description": "a super thin layer to be able to publish to reggie private server without npm dependencies",
+  "main": "index.js",
+  "repository": "git@github.com:gagoar/delBoy.git",
+  "author": "xeroice@gmail.com",
+  "license": "MIT",
+  "bin": "./bin/delBoy-cli",
+  "engines" : { "node" : ">=4.0" },
+  "dependencies": {
+    "optimist": "^0.6.1",
+    "request": "^2.79.0",
+    "split": "^1.0.0",
+    "tar-fs": "^1.15.1"
+  }
+}
