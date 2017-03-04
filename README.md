@@ -12,12 +12,12 @@ tooling around this service is. (reggie)[https://github.com/mbrevoort/node-reggi
 in the package you wanna start publishing
 
 ```
- npm install --save-dev delBoy
+ npm install --save-dev del-boy
 ```
 or if you are using yarn
 
 ```
- yarn add delBoy
+ yarn add --dev del-boy
 ```
 
 #Publishing
