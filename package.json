@@ -6,7 +6,7 @@
   "repository": "git@github.com:gagoar/delBoy.git",
   "author": "xeroice@gmail.com",
   "license": "MIT",
-  "bin": "bin/delBoy-cli",
+  "bin": "bin/delBoy-cli.js",
   "engines": {
     "node": ">=4.0"
   },
