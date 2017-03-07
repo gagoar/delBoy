@@ -23,24 +23,23 @@ if (argv.h) {
   process.exit(0);
 }
 
-const { name, version, publishConfig } = JSON.parse(fs.readFileSync(`${argv.dir}/package.json`));
+const packageInfo = JSON.parse(fs.readFileSync(`${argv.dir}/package.json`));
 
-const registry = argv.u ? argv.u : publishConfig.registry;
+const registry = argv.u ? argv.u : packageInfo.publishConfig.registry;
 
 const publishPackage = () => {
     if (!registry) {
         console.error('ups, private npm server url not found, please provide one via package.json (publishConfig: {registry: server-url} or via command line with -u option');
         process.exit(0);
     }
-
-    publish(argv.dir, registry, name, version);
+    publish(argv.dir, registry, packageInfo.name, packageInfo.version);
 }
 
 if (argv.command === 'publish') {
     publishPackage();
+
 } else {
     console.log(`dry run!...`);
-    console.log(`packageName: ${ name }, version: ${version}, and it would be published to ${registry}`);
+    console.log(`packageName: ${ packageInfo.name }, version: ${packageInfo.version}, and it would be published to ${registry}`);
     console.log(`run delBoy publish to make the actual publishing of the package`);
 }
-
