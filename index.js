@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const { spawn } = require('child_process');
-const { createGzip } = require('zlib');
+const spawn = require('child_process').spawn;
+const createGzip = require('zlib').createGzip;
 
 const split = require('split');
 const request = require('request');
@@ -45,9 +45,9 @@ const compressAndUpload = (dir, files, packageUrl, cb) => (
 
 const publish = (dir, registry, name, version, cb) => {
 
-    let gitList = spawn('git', [ 'ls-files' ], {cwd: dir});
-    let packageUrl = `${registry}/package/${name}/${version}`;
-    let files = [];
+    const gitList = spawn('git', [ 'ls-files' ], {cwd: dir});
+    const packageUrl = `${registry}/package/${name}/${version}`;
+    const files = [];
 
     gitList.stdout.pipe(split())
         .on('data', (line) => files.push(line))
