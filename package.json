@@ -1,6 +1,6 @@
 {
   "name": "del-boy",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A super thin layer to be able to publish to reggie private server without npm dependencies",
   "main": "index.js",
   "repository": "git@github.com:gagoar/delBoy.git",
