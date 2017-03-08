@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const optimist = require('optimist');
-const publish = require('../index');
+const delboy = require('../index');
 
 const argv = optimist
     .usage('delBoy  publish --> Publish current module')
@@ -32,14 +32,15 @@ const publishPackage = () => {
         console.error('ups, private npm server url not found, please provide one via package.json (publishConfig: {registry: server-url} or via command line with -u option');
         process.exit(0);
     }
-    publish(argv.dir, registry, packageInfo.name, packageInfo.version);
+    delBoy.publish(argv.dir, registry, packageInfo.name, packageInfo.version);
 }
 
 if (argv.command === 'publish') {
     publishPackage();
 
 } else {
-    console.log(`dry run!...`);
+    console.log('dry run!...');
     console.log(`packageName: ${ packageInfo.name }, version: ${packageInfo.version}, and it would be published to ${registry}`);
-    console.log(`run delBoy publish to make the actual publishing of the package`);
+    delBoy.dryRun(argv.dir);
+    console.log('run del-boy publish to make the actual publishing of the package');
 }
