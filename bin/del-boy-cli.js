@@ -5,8 +5,8 @@ const optimist = require('optimist');
 const delboy = require('../index');
 
 const argv = optimist
-    .usage('delBoy  publish --> Publish current module')
-    .usage('delBoy  --> dry run')
+    .usage('del-boy-cli publish   --> Publish current module')
+    .usage('del-boy-cli   --> dry run')
     .default({ dir: process.cwd()})
     .describe('u', 'The base URL of the Reggie server (e.g. http://reggie:8080)')
     .describe('dir', 'the directory from where we want to build the package (eg. current directy)')
@@ -32,7 +32,7 @@ const publishPackage = () => {
         console.error('ups, private npm server url not found, please provide one via package.json (publishConfig: {registry: server-url} or via command line with -u option');
         process.exit(0);
     }
-    delBoy.publish(argv.dir, registry, packageInfo.name, packageInfo.version);
+    delboy.publish(argv.dir, registry, packageInfo.name, packageInfo.version);
 }
 
 if (argv.command === 'publish') {
@@ -41,6 +41,6 @@ if (argv.command === 'publish') {
 } else {
     console.log('dry run!...');
     console.log(`packageName: ${ packageInfo.name }, version: ${packageInfo.version}, and it would be published to ${registry}`);
-    delBoy.dryRun(argv.dir);
+    delboy.dryRun(argv.dir);
     console.log('run del-boy publish to make the actual publishing of the package');
 }
