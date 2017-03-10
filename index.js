@@ -72,7 +72,7 @@ _getFilesByGit = (dir, onDone, onError) => {
     spawn('git', ['ls-files'], {cwd: dir}).stdout
         .pipe(split())
         .on('data', (line) => files.push(line))
-        .on('end', () => resolve(files))
+        .on('end', () => onDone(files))
         .on('error', onError);
 };
 
